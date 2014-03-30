@@ -10,13 +10,6 @@ import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-/**
-* Created with IntelliJ IDEA.
-* User: apple
-* Date: 27/03/2014
-* Time: 23:00
-* To change this template use File | Settings | File Templates.
-*/
 public class RestJsonFetcherTest {
     RestJsonFetcher restJsonFetcher;
     @Before

@@ -5,13 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: apple
- * Date: 29/03/2014
- * Time: 13:46
- * To change this template use File | Settings | File Templates.
- */
+
 @Entity
 @Table(name = "broad_casts")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -35,14 +29,9 @@ public class Broadcast {
     @Column(name = "duration", nullable = false)
     private String duration;
 
-    @Transient
+    @OneToOne(mappedBy = "broadcast",cascade={CascadeType.ALL})
     private Programme programme;
 
-    @OneToMany(cascade={CascadeType.ALL})
-    @JoinTable(name="broadcast_programme",
-            joinColumns = @JoinColumn(name = "broadcast_id"),
-            inverseJoinColumns = @JoinColumn(name = "programme_id"))
-    private List<Programme> programmeList;
 
     public Boolean getIs_repeat() {
         return is_repeat;
@@ -98,13 +87,5 @@ public class Broadcast {
 
     public void setProgramme(Programme programme) {
         this.programme = programme;
-    }
-
-    public List<Programme> getProgrammeList() {
-        return programmeList;
-    }
-
-    public void setProgrammeList(List<Programme> programmeList) {
-        this.programmeList = programmeList;
     }
 }

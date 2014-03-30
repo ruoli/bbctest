@@ -8,7 +8,6 @@ import com.lee.Service.BroadcastService;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BBCMain {
@@ -18,16 +17,13 @@ public class BBCMain {
 
         RestJsonFetcher fetcher = new RestJsonFetcher();
         List<Broadcast> broadCastsList = fetcher.getBroadCastModelList();
-        List<Programme> programmeList = new ArrayList<Programme>();
 
         BroadcastService broadcastService = (BroadcastService) context.getBean("broadcastService");
 
-        for (int i = 2; i < 12; i++){
-            programmeList.add(broadCastsList.get(i).getProgramme());
-            broadCastsList.get(i).setProgrammeList(programmeList);
+        for (int i = 0; i < broadCastsList.size(); i++){
             broadcastService.persistBroadCast(broadCastsList.get(i));
-            programmeList.clear();
         }
+
         context.close();
 
     }

@@ -1,29 +1,22 @@
 package com.lee.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
-/**
-* Created with IntelliJ IDEA.
-* User: apple
-* Date: 29/03/2014
-* Time: 13:46
-* To change this template use File | Settings | File Templates.
-*/
+
 @Entity
 @Table(name = "programme")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Programme {
-    @ManyToOne
-    @JoinColumn(name="programme_id",
-            insertable=false, updatable=false,
-            nullable=false)
+    @OneToOne
+    @PrimaryKeyJoinColumn
     private Broadcast broadcast;
 
     @Id
     @GeneratedValue
-    @Column(name = "programme_id", nullable = false)
+    @Column(name="broadcast_id", unique=true, nullable=false)
     private String id;
 
     @Column(name = "pid", nullable = false)
@@ -62,13 +55,6 @@ public class Programme {
     @Column(name = "is_legacy_media", nullable = false)
     private boolean is_legacy_media;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getType() {
         return type;
@@ -166,11 +152,4 @@ public class Programme {
         this.is_legacy_media = is_legacy_media;
     }
 
-    public Broadcast getBroadcast() {
-        return broadcast;
-    }
-
-    public void setBroadcast(Broadcast broadcast) {
-        this.broadcast = broadcast;
-    }
 }
