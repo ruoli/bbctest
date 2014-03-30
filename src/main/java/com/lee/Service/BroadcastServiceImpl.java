@@ -6,13 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * Created with IntelliJ IDEA.
- * User: apple
- * Date: 28/03/2014
- * Time: 18:08
- * To change this template use File | Settings | File Templates.
- */
 @Service("broadcastService")
 public class BroadcastServiceImpl implements BroadcastService {
     @Autowired
@@ -22,5 +15,11 @@ public class BroadcastServiceImpl implements BroadcastService {
     @Transactional
     public void persistBroadCast(Broadcast broadcast) {
         broadcastDAO.persistBroadCast(broadcast);
+    }
+
+    @Override
+    @Transactional
+    public Broadcast findBroadcastById(String pid) {
+        return broadcastDAO.findBroadcastById(pid);
     }
 }

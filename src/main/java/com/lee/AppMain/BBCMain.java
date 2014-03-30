@@ -22,7 +22,7 @@ public class BBCMain {
 
         BroadcastService broadcastService = (BroadcastService) context.getBean("broadcastService");
 
-        for (int i = 2; i < 12; i++){
+        for (int i = 0; i < broadCastsList.size(); i++){
             programmeList.add(broadCastsList.get(i).getProgramme());
             broadCastsList.get(i).setProgrammeList(programmeList);
             broadcastService.persistBroadCast(broadCastsList.get(i));

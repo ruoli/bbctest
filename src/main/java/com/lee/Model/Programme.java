@@ -4,13 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
-/**
-* Created with IntelliJ IDEA.
-* User: apple
-* Date: 29/03/2014
-* Time: 13:46
-* To change this template use File | Settings | File Templates.
-*/
+
 @Entity
 @Table(name = "programme")
 @JsonIgnoreProperties(ignoreUnknown = true)

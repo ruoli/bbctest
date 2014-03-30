@@ -5,13 +5,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-/**
- * Created with IntelliJ IDEA.
- * User: apple
- * Date: 28/03/2014
- * Time: 18:00
- * To change this template use File | Settings | File Templates.
- */
 @Repository("broadcastDAO")
 public class BroadcastDAOImpl implements BroadcastDAO {
 
@@ -21,5 +14,10 @@ public class BroadcastDAOImpl implements BroadcastDAO {
     @Override
     public void persistBroadCast(Broadcast broadcast) {
         sessionFactory.getCurrentSession().persist(broadcast);
+    }
+
+    @Override
+    public Broadcast findBroadcastById(String pid) {
+        return (Broadcast)sessionFactory.getCurrentSession().get(Broadcast.class, pid);
     }
 }
