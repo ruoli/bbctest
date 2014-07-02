@@ -1,8 +1,6 @@
 bbctest
 =======
 
-this is bbctest for bbc job interview:
-
 Master branch: One-Many mapping 
 
 TrialOne branch: One-One mapping
